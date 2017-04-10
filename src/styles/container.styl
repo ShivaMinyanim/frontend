@@ -1,0 +1,20 @@
+@import 'responsiveness'
+
+.container
+  margin auto
+
+@media (max-width: small-device)
+  .container
+    max-width small-device
+
+@media (min-width: small-device) and (max-width: medium-device)
+  .container
+    max-width small-device
+
+@media (min-width: medium-device) and (max-width: large-device)
+  .container
+    max-width medium-device
+
+@media (min-width: large-device)
+  .container
+    max-width large-device

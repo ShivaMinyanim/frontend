@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Next Minyanim</h1>
+    <h1>upcoming Minyanim</h1>
   </div>
 </template>
 

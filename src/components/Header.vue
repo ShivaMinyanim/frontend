@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    <h1>Next Minyanim</h1>
+    <div class="container">
+      <h1>Next Minyanim</h1>
+    </div>
   </div>
 </template>
 

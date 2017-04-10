@@ -1,0 +1,89 @@
+width = 960px
+columns = 12
+columnWidth = 100 / 12
+gutterWidth = 50px
+gutterPadding = gutterWidth / 2
+debugLevel = 6
+debugSelectors = ()
+debugColor = #fafafa
+staticWidth = 165px
+staticWidthCollapsed = 55px
+
+clearfix()
+  &::after
+    clear both
+
+    &, ^[-2..-2]::before
+      content ' '
+      display table
+
+.grid
+  .row
+    clearfix()
+
+    column--
+
+      [class^='^[2..2]']
+        debugSelector = selector('^[3..3]')
+
+        &:not(.column--fluid)
+          float left
+
+        &.^[2..2]
+          &padded
+            padding 0 gutterPadding
+
+          &rpad
+            padding-right (gutterPadding / 2)
+
+          &lpad
+            padding-left (gutterPadding / 2)
+
+        ~/^[0]--debug {debugSelector}
+          background-color debugColor
+
+          for i in 1..debugLevel
+            push(debugSelectors, debugSelector)
+
+            & ^[3..3] {join(' ', debugSelectors)}
+              background-color darken(debugColor, 10 * i)
+
+    for i in 1..columns
+      .column--{i}
+        width unit(columnWidth * i, '%')
+
+      .offset--{i}
+        margin-left unit(columnWidth * i, '%')
+
+      .offset--{i}
+        margin-left unit(columnWidth * i, '%')
+
+    .column--static
+      position fixed
+      top 60px
+      bottom 0
+
+      &:not(.column--collapsed)
+        width staticWidth
+
+      &.column--collapsed
+        width staticWidthCollapsed
+
+    .column--fluid
+      overflow auto
+      padding-bottom 25px
+
+      &:not(.column--collapsed)
+        margin-left staticWidth
+
+      &.column--collapsed
+        margin-left staticWidthCollapsed
+
+  &&--fold .row
+
+    @media screen and (max-width: 1280px)
+      .column--static:not(.column--collapsed)
+        width staticWidthCollapsed
+
+      .column--fluid:not(.column--collapsed)
+        margin-left staticWidthCollapsed
