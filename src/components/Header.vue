@@ -3,17 +3,18 @@
     <div class="container">
       <div class="links">
         <div class="links--left">
-          <router-link to="/upcoming-minyanim" class="uppercase">Minyanim</router-link>
-          <router-link to="/shiva-houses" class="uppercase">Houses</router-link>
+          <router-link to="/upcoming-minyanim" class="uppercase copy--text">Minyanim</router-link>
+          <router-link to="/shiva-houses" class="uppercase copy--text">Houses</router-link>
         </div>
         <div class="links--right">
-          <router-link to="/donate" class="uppercase">Donate</router-link>
-          <router-link to="/account">Ari Miller ></router-link>
+          <router-link to="/donate" class="uppercase copy--accent">Donate</router-link>
+          <router-link to="/account" class="copy--text carrot--down---after">Ari Miller</router-link>
         </div>
       </div>
       <div class="title--container">
-        <!-- <img src="logo"> -->
-        <div style="height: 20px; width: 20px; background: white;"></div>
+        <div class="logo--container">
+          <img src="../assets/logo.svg" class="logo">
+        </div>
         <h1 class="title">Next Minyanim</h1>
       </div>
     </div>
@@ -36,6 +37,17 @@ export default {
     position absolute
     right 0
     top 0
+    
+  .logo--container
+    display flex
+    align-items center
+    margin-left -75px
+    padding-right 25px
+
+    .logo
+      border-right 1px solid rgba(55,62,77,.56)
+      height 28px
+      padding 5px 25px 5px 0
 
   .links
     display flex
@@ -53,7 +65,6 @@ export default {
         margin-left 45px
     
     a
-      color copy-color
       text-decoration none
 
     .router-link-active
@@ -61,8 +72,6 @@ export default {
   
   .title--container
     display flex
+    padding-bottom 20px
     
-    .title
-      padding-bottom 20px
-
 </style>

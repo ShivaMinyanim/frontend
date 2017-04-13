@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400, 600')
+@import 'colors'
 
 #app
   font-family 'Open Sans', sans-serif
@@ -9,3 +10,26 @@ h1, h2, h3, h4, h5, h6
 
 .uppercase
   text-transform uppercase
+
+.copy
+    &--text, &--text a
+        color copy-color
+
+    &--accent, &--accent a
+        color copy-accent
+
+.carrot--down---after
+    position relative
+    padding-right 13px
+
+.carrot--down---after:before
+    content ''
+    position absolute
+    width 0
+    height 0
+    border 3px solid transparent
+    border-top 3px solid copy-color
+    top 0
+    right 0
+    margin 7px 0 0
+    
