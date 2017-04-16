@@ -1,9 +1,9 @@
 <template>
-  <h1>Welcome to the app</h1>
+    <h1>Welcome to the app</h1>
 </template>
 
 <script>
 export default {
-  name: 'hello'
+    name: 'hello'
 }
 </script>

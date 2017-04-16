@@ -4,6 +4,7 @@
 #app
   font-family 'Open Sans', sans-serif
   font-weight 300
+  color text--color-primary
 
 h1, h2, h3, h4, h5, h6
   font-weight 300
@@ -11,12 +12,12 @@ h1, h2, h3, h4, h5, h6
 .uppercase
   text-transform uppercase
 
-.copy
-  &--text, &--text a
-    color copy-color
+.text
+  &--color-secondary, &--color-secondary a
+    color text--color-secondary
 
-  &--accent, &--accent a
-    color copy-accent
+  &--color-accent, &-color-accent a
+    color text--color-accent
 
 .carrot--down---after
   position relative
@@ -28,7 +29,7 @@ h1, h2, h3, h4, h5, h6
     width 0
     height 0
     border 3px solid transparent
-    border-top 3px solid copy-color
+    border-top 3px solid text--color-secondary
     top 0
     right 0
     margin 7px 0 0
