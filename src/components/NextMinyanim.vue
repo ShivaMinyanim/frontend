@@ -1,5 +1,5 @@
 <template>
-    <div class="container content-center">
+    <div class="container center">
         <section class="minyan-list">
             <article class="minyan-list--item">
                 <div class="minyan-description">

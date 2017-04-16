@@ -1,7 +1,11 @@
-@import 'responsiveness'
+@import 'utils/devices'
 
 .container
   margin auto
+
+.center
+  display flex
+  justify-content center
 
 @media (max-width: small-device)
   .container
@@ -18,7 +22,3 @@
 @media (min-width: large-device)
   .container
     max-width large-device
-
-.content-center
-  display flex
-  justify-content center
