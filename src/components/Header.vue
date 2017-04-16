@@ -3,7 +3,7 @@
     <div class="container">
       <div class="links">
         <div class="links--left">
-          <router-link to="/upcoming-minyanim" class="uppercase copy--text">Minyanim</router-link>
+          <router-link to="/next-minyanim" class="uppercase copy--text">Minyanim</router-link>
           <router-link to="/shiva-houses" class="uppercase copy--text">Houses</router-link>
         </div>
         <div class="links--right">

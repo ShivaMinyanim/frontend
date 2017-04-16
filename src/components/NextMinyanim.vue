@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'upcoming',
+  name: 'next',
   data () {
     return {
       //

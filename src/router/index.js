@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-import UpcomingMinyanim from '@/components/UpcomingMinyanim'
+import NextMinyanim from '@/components/NextMinyanim'
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/upcoming-minyanim',
-      name: 'Upcoming',
-      component: UpcomingMinyanim
+      path: '/next-minyanim',
+      name: 'Next',
+      component: NextMinyanim
     }
   ]
 })
