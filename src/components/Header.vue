@@ -8,7 +8,7 @@
                 </div>
                 <div class="links--right">
                     <router-link to="/donate" class="uppercase text--color-accent donate">Donate</router-link>
-                    <router-link to="/account" class="text--color-secondary carrot--after-down">Ari Miller</router-link>
+                    <a href="javascript:void(0)" class="text--color-secondary carrot--after-down">Ari Miller</a>
                 </div>
             </nav>
             <div class="title--container">
