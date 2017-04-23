@@ -1,4 +1,4 @@
-import Minyan from '../models/Minyan'
+import Minyan from '@/models/Minyan'
 
 export default class MinyanService {
     /**

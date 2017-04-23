@@ -19,8 +19,8 @@
 
 <script>
 
-import time from '../mixins/timeFilter'
-import MinyanService from '../services/MinyanService'
+import time from '@/mixins/timeFilter'
+import MinyanService from '@/services/MinyanService'
 
 export default {
     name: 'next',
