@@ -19,6 +19,8 @@ module.exports = {
   'rules': {
     // allow paren-less arrow functions
     'arrow-parens': 0,
+    // disable no assignments in return statements
+    'no-return-assign': 0,
     // indentation is 4 spaces
     'indent': ['error', 4],
     // allow async-await

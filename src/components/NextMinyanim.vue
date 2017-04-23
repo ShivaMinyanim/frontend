@@ -20,6 +20,7 @@
 <script>
 
 import time from '../mixins/timeFilter'
+import MinyanService from '../services/MinyanService'
 
 export default {
     name: 'next',
@@ -28,29 +29,12 @@ export default {
 
     data () {
         return {
-            minyanim: [
-                {
-                    type: 'Shacharis',
-                    house: {
-                        street: '123 Main St.',
-                        city: 'Teaneck',
-                        state: 'NJ',
-                        zip: '07666'
-                    },
-                    timestamp: '2016-12-27 07:30:00'
-                },
-                {
-                    type: 'Mincha',
-                    house: {
-                        street: '123 Main St.',
-                        city: 'Teaneck',
-                        state: 'NJ',
-                        zip: '07666'
-                    },
-                    timestamp: '2016-12-27 16:00:00'
-                }
-            ]
+            minyanim: []
         }
+    },
+
+    mounted () {
+        MinyanService.getTodaysMinyanim().then(minyanim => this.minyanim = minyanim)
     }
 }
 </script>
