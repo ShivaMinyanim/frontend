@@ -7,7 +7,7 @@
                     <router-link to="/shiva-houses" class="uppercase text--color-secondary">Houses</router-link>
                 </div>
                 <div class="links--right">
-                    <router-link to="/donate" class="uppercase text--color-accent">Donate</router-link>
+                    <router-link to="/donate" class="uppercase text--color-accent donate">Donate</router-link>
                     <router-link to="/account" class="text--color-secondary carrot--after-down">Ari Miller</router-link>
                 </div>
             </nav>
