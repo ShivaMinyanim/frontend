@@ -20,7 +20,7 @@
 <script>
 
 import time from '@/mixins/timeFilter'
-import MinyanService from '@/services/MinyanService'
+import MinyanHttpService from '@/http/MinyanHttpService'
 
 export default {
     name: 'next',
@@ -34,7 +34,8 @@ export default {
     },
 
     mounted () {
-        MinyanService.getTodaysMinyanim().then(minyanim => this.minyanim = minyanim)
+        // MinyanService.get().then(minyanim => this.minyanim = minyanim)
+        MinyanHttpService.get().then(minyanim => console.log(minyanim))
     }
 }
 </script>
