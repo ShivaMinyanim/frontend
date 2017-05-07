@@ -34,8 +34,7 @@ export default {
     },
 
     mounted () {
-        // MinyanService.get().then(minyanim => this.minyanim = minyanim)
-        MinyanHttpService.get().then(minyanim => console.log(minyanim))
+        MinyanHttpService.get().then(minyanim => this.minyanim = minyanim)
     }
 }
 </script>

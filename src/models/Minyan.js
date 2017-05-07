@@ -8,6 +8,6 @@ export default class Minyan {
     constructor (attributes = []) {
         this.type = attributes.type
         this.house = attributes.house
-        this.timesamp = attributes.timestamp
+        this.timestamp = attributes.timestamp
     }
 }
