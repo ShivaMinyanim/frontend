@@ -1,6 +1,9 @@
 <template>
     <div class="container center">
         <section class="minyan-list">
+            <h2>
+                <i class="fa fa-chevron-left"></i>Sunday May 7, 2017 -- י״א אייר תשע״ז<i class="fa fa-chevron-right"></i>
+            </h2>
             <article class="minyan-list--item" v-for="minyan in minyanim">
                 <div class="minyan-description">
                     <h3>{{ minyan.type }}</h3>
