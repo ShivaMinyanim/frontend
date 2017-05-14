@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export default class HttpClient {
+export default class AxiosClient {
     /**
-     * The HTTP client we are currently using.
+     * An instance of the HTTP client we are currently using.
      */
     static client = axios.create({
         baseURL: process.env.API_URL
@@ -13,7 +13,7 @@ export default class HttpClient {
      *
      * @return {Promise}
      */
-    static get (path) {
-        return this.client.get(path)
+    static get (path, params) {
+        return this.client.get(path, { params })
     }
 }

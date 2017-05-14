@@ -1,4 +1,4 @@
-import HttpClient from './HttpClient'
+import HttpClient from '../clients/AxiosClient'
 
 export default class HttpService {
     /**
@@ -7,9 +7,9 @@ export default class HttpService {
      *
      * @return {Promise<Model>}
      */
-    static get () {
+    static get (params) {
         return HttpClient
-            .get(this.path)
+            .get(this.path, params)
             .then(response => response.data.data.map(result => new this.Model(result)))
     }
 }

@@ -25,11 +25,9 @@
 <script>
 
 import time from '@/mixins/timeFilter'
-import MinyanHttpService from '@/http/MinyanHttpService'
+import MinyanHttpService from '@/http/services/MinyanHttpService'
 
 export default {
-    name: 'next',
-
     mixins: [time],
 
     data () {
@@ -39,7 +37,7 @@ export default {
     },
 
     mounted () {
-        MinyanHttpService.get().then(minyanim => this.minyanim = minyanim)
+        MinyanHttpService.get({ year: '2017' }).then(minyanim => this.minyanim = minyanim)
     }
 }
 </script>
