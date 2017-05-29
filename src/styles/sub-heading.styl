@@ -1,4 +1,5 @@
 @import 'utils/colors'
+@import 'utils/transitions'
 
 .sub-heading
   background primary
@@ -8,7 +9,12 @@
   padding-bottom 20px
 
   .fa
+    cursor pointer
+    transition transition-background-hover
+    
     &-chevron-right
       padding-left 20px
     &-chevron-left
       padding-right 20px
+    &:hover
+      color white 
