@@ -2,7 +2,7 @@
     <div>
         <div class="sub-heading">
             <i class="fa fa-chevron-left" @click="previous()"></i>
-                {{ secularDate }} -- {{ hebrewDate }}
+                {{ secularDate }} &mdash; {{ hebrewDate }}
             <i class="fa fa-chevron-right" @click="next()"></i>
         </div>
         <div class="container center">
@@ -27,8 +27,8 @@
 <script>
 
 import moment from 'moment'
-import axios from 'axios'
 
+import zman from '@/zman'
 import time from '@/mixins/timeFilter'
 import MinyanHttpService from '@/http/services/MinyanHttpService'
 
@@ -40,7 +40,7 @@ export default {
             minyanim: [],
 
             secularDate: moment().format('MMM D, YYYY'),
-            hebrewDate: ''
+            hebrewDate: zman().format('D M, Y')
         }
     },
 
@@ -57,22 +57,10 @@ export default {
     mounted () {
         // load all minyanim for this week
         // filter minyanim by today
-        const filter = { year: '2017', month: '5', day: '14' }
+        const filter = { year: '2017' }
         MinyanHttpService.get(filter).then(minyanim => this.minyanim = minyanim)
 
         // MinyanHttpService.getByDate(today).then(minyanim => this.minyanim = minyanim)
-
-        let year = moment().format('YYYY')
-        let month = moment().format('M')
-        let day = moment().format('D')
-
-        // zman(today).hebrew().format('M D, Y')
-
-        axios.get(`http://www.hebcal.com/converter/?cfg=json&gy=${year}&gm=${month}&gd=${day}&g2h=2`).then(response => {
-            let date = response.data
-            // this.hebrewDate = `${date.hd} ${date.hm}, ${date.hy}`
-            this.hebrewDate = date.hebrew
-        })
     }
 }
 </script>
