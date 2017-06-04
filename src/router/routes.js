@@ -1,4 +1,4 @@
-import Hello from '@/views/Hello'
+import Welcome from '@/views/Welcome'
 import NextMinyanim from '@/views/NextMinyanim'
 
 /*
@@ -13,7 +13,7 @@ import NextMinyanim from '@/views/NextMinyanim'
 */
 
 const routes = [
-    { path: '/', component: Hello },
+    { path: '/', component: Welcome },
     { path: '/next-minyanim', component: NextMinyanim }
 ]
 
