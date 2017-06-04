@@ -29,12 +29,9 @@
 import moment from 'moment'
 
 import zman from '@/zman'
-import time from '@/mixins/timeFilter'
 import MinyanHttpService from '@/http/services/MinyanHttpService'
 
 export default {
-    mixins: [time],
-
     data () {
         return {
             minyanim: [],

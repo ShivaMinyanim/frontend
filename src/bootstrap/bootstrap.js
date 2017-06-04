@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
+import * as filters from '../util/filters'
 
 Vue.config.productionTip = false
+
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+})
 
 /*
 |--------------------------------------------------------------------------
