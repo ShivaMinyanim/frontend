@@ -61,3 +61,70 @@ export default {
     }
 }
 </script>
+
+<style scoped lang="stylus">
+// sub heading
+@import '../styles/variables'
+
+.sub-heading
+  background primary
+  color #898F9A
+  text-align center
+  font-size 13px
+  padding-bottom 20px
+
+  .fa
+    cursor pointer
+    transition transition-background-hover
+    
+    &-chevron-right
+      padding-left 20px
+    &-chevron-left
+      padding-right 20px
+    &:hover
+      color white 
+
+// minyan list
+.minyan-list
+  margin 60px 0 0 0
+  padding 0
+  width 700px
+  
+  h2
+    font-size 14px
+    text-align center
+    
+    .fa
+      font-size 12px
+      
+      &-chevron-right
+        padding-left 20px
+        
+      &-chevron-left
+        padding-right 20px
+
+  &--item
+    display flex
+    justify-content space-between
+    padding 33px 0
+  
+    &:not(:first-of-type)
+      border-top 1px solid #e9ebf0
+    
+    .minyan
+      &-description
+        width 375px
+
+        .secondary
+          font-size 13px
+
+      &-time
+        width 175px
+
+      &-action
+        display flex
+        align-items center
+    h3
+      font-size 24px
+      margin 0
+</style>
