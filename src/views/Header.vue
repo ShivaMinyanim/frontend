@@ -13,7 +13,7 @@
             </nav>
             <div class="title--container">
                 <div class="logo--container">
-                    <img src="../assets/logo.svg" class="logo">
+                    <img src="/static/logo.svg" class="logo">
                 </div>
                 <h1 class="title">Next Minyanim</h1>
             </div>
