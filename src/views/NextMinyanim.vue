@@ -15,8 +15,6 @@
 import moment from 'moment'
 
 import zman from '@/util/zman'
-import MinyanHttpService from '@/http/services/MinyanHttpService'
-
 import SubHeader from '@/components/SubHeader'
 import MinyanList from '@/components/MinyanList'
 
@@ -46,9 +44,9 @@ export default {
         // load all minyanim for this week
         // filter minyanim by today
         const filter = { year: '2017' }
-        MinyanHttpService.get(filter).then(minyanim => this.minyanim = minyanim)
 
-        // MinyanHttpService.getByDate(today).then(minyanim => this.minyanim = minyanim)
+        this.$store.dispatch('FETCH_MINYAN_LIST', { filter })
+            .then(() => this.minyanim = this.$store.getters.minyanim)
     }
 }
 </script>

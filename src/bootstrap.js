@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from '@/App'
+import store from '@/store'
 import router from '@/router'
 import * as filters from '@/util/filters'
 
@@ -14,6 +15,7 @@ Object.keys(filters).forEach(key => {
 // create the app instance
 const app = new Vue({
     router,
+    store,
     render: h => h(App)
 })
 
