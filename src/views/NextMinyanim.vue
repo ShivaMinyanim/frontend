@@ -1,39 +1,27 @@
 <template>
     <div>
-        <div class="sub-heading">
+        <sub-header>
             <i class="fa fa-chevron-left" @click="previous()"></i>
                 {{ secularDate }} &mdash; {{ hebrewDate }}
             <i class="fa fa-chevron-right" @click="next()"></i>
-        </div>
+        </sub-header>
         <div class="container center">
-            <section class="minyan-list">
-                <article class="minyan-list--item" v-for="minyan in minyanim">
-                    <div class="minyan-time">
-                        <h3>{{ minyan.timestamp | time }}</h3>
-                    </div>
-                    <div class="minyan-description capitalize">
-                        <h3>{{ minyan.type }}</h3>
-                        <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{minyan.house.state }}</span>
-                    </div>
-                    <div class="minyan-action">
-                        <a class="button button--primary uppercase">Attend</a>
-                    </div>
-                </article>
-            </section>
+            <minyan-list :minyanim="minyanim"></minyan-list>
         </div>
     </div>
 </template>
 
 <script>
-
 import moment from 'moment'
 
-import zman from '@/zman'
-import time from '@/mixins/timeFilter'
+import zman from '@/util/zman'
 import MinyanHttpService from '@/http/services/MinyanHttpService'
 
+import SubHeader from '@/components/SubHeader'
+import MinyanList from '@/components/MinyanList'
+
 export default {
-    mixins: [time],
+    components: { MinyanList, SubHeader },
 
     data () {
         return {
@@ -64,3 +52,18 @@ export default {
     }
 }
 </script>
+
+<style scoped lang="stylus">
+@import '../styles/variables'
+
+.fa
+    cursor pointer
+    transition transition-background-hover
+
+    &-chevron-right
+        padding-left 20px
+    &-chevron-left
+        padding-right 20px
+    &:hover
+        color white
+</style>

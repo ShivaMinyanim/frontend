@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Header from './views/Header'
+import Header from '@/components/Header'
 
 export default {
     name: 'app',
@@ -16,4 +16,12 @@ export default {
 }
 </script>
 
-<style lang="stylus" src="./styles/app.styl"></style>
+<style lang="stylus">
+@import './styles/buttons'
+@import './styles/layout'
+@import './styles/typography'
+
+html, body
+    margin 0
+    background background
+</style>
