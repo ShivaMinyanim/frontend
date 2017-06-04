@@ -1,4 +1,4 @@
-import Minyan from '@/models/Minyan'
+import Minyan from '../models/Minyan'
 import HttpService from './HttpService'
 
 export default class MinyanHttpService extends HttpService {

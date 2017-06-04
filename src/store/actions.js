@@ -1,9 +1,4 @@
-// import {
-//     fetchUser,
-//     fetchItems,
-//     fetchIdsByType
-// } from '../api'
-import MinyanHttpService from '../http/services/MinyanHttpService'
+import MinyanHttpService from '@/api/services/MinyanHttpService'
 
 export default {
     FETCH_MINYAN_LIST: ({ commit, dispatch, state }, { filter }) => {
