@@ -28,7 +28,7 @@
 
 import moment from 'moment'
 
-import zman from '@/zman'
+import zman from '@/util/zman'
 import MinyanHttpService from '@/http/services/MinyanHttpService'
 
 export default {
