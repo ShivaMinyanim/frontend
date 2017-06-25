@@ -59,5 +59,5 @@ class Zman {
  * @return {Zman}
  */
 export default function (args) {
-    return new Zman(new Hebcal.HDate(args))
+    return new Zman(new Hebcal.HDate(new Date(args)))
 }

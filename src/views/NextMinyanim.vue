@@ -24,28 +24,42 @@ export default {
     data () {
         return {
             minyanim: [],
+            dayOffset: '0'
+        }
+    },
 
-            secularDate: moment().format('MMM D, YYYY'),
-            hebrewDate: zman().format('D M, Y')
+    computed: {
+        date () {
+            return moment().add(this.dayOffset, 'days')
+        },
+
+        secularDate () {
+            return this.date.format('MMM D, YYYY')
+        },
+
+        hebrewDate () {
+            return zman(this.date).format('D M, Y')
         }
     },
 
     methods: {
         next () {
-            // display the next days minyanim
+            this.dayOffset++
         },
 
         previous () {
-            // display the previous days minyanim
+            this.dayOffset--
         }
     },
 
     mounted () {
-        // load all minyanim for this week
-        // filter minyanim by today
-        const filter = { year: '2017' }
+        const date = {
+            month: this.date.format('MM'),
+            day: this.date.format('DD'),
+            year: this.date.format('YYYY')
+        }
 
-        this.$store.dispatch('FETCH_MINYAN_LIST', { filter })
+        this.$store.dispatch('FETCH_MINYAN_LIST', { filter: date })
             .then(() => this.minyanim = this.$store.getters.minyanim)
     }
 }
