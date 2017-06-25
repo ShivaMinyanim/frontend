@@ -6,7 +6,8 @@
             <i class="fa fa-chevron-right" @click="next()"></i>
         </sub-header>
         <div class="container center">
-            <minyan-list :minyanim="minyanim"></minyan-list>
+            <minyan-list :minyanim="minyanim" v-if="minyanim.length > 0"></minyan-list>
+            <p v-else>No Minyanim for this day.</p>
         </div>
     </div>
 </template>
@@ -45,22 +46,28 @@ export default {
     methods: {
         next () {
             this.dayOffset++
+            this.updateMinyanList()
         },
 
         previous () {
             this.dayOffset--
+            this.updateMinyanList()
+        },
+
+        updateMinyanList () {
+            const date = {
+                month: this.date.format('MM'),
+                day: this.date.format('DD'),
+                year: this.date.format('YYYY')
+            }
+
+            this.$store.dispatch('FETCH_MINYAN_LIST', { filter: date })
+                .then(() => this.minyanim = this.$store.getters.minyanim)
         }
     },
 
     mounted () {
-        const date = {
-            month: this.date.format('MM'),
-            day: this.date.format('DD'),
-            year: this.date.format('YYYY')
-        }
-
-        this.$store.dispatch('FETCH_MINYAN_LIST', { filter: date })
-            .then(() => this.minyanim = this.$store.getters.minyanim)
+        this.updateMinyanList()
     }
 }
 </script>
