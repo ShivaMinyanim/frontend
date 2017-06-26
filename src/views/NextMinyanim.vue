@@ -1,9 +1,13 @@
 <template>
     <div>
         <sub-header>
-            <i class="fa fa-chevron-left" @click="previous()"></i>
-                {{ secularDate }} &mdash; {{ hebrewDate }}
-            <i class="fa fa-chevron-right" @click="next()"></i>
+            <div class="icon-container">
+                <i v-if="dayOffset > MIN_OFFSET" class="fa fa-chevron-left" @click="previous()"></i>
+            </div>
+            <span>{{ secularDate }} &mdash; {{ hebrewDate }}</span>
+            <div class="icon-container">
+                <i v-if="dayOffset < MAX_OFFSET" class="fa fa-chevron-right" @click="next()"></i>
+            </div>
         </sub-header>
         <div class="container center">
             <minyan-list :minyanim="minyanim" v-if="minyanim.length > 0"></minyan-list>
@@ -25,7 +29,10 @@ export default {
     data () {
         return {
             minyanim: [],
-            dayOffset: '0'
+            dayOffset: '0',
+
+            MIN_OFFSET: 0,
+            MAX_OFFSET: 8
         }
     },
 
@@ -75,14 +82,21 @@ export default {
 <style scoped lang="stylus">
 @import '../styles/variables'
 
+.icon-container
+    width 29px
+    height 13px
+    display inline-block
+
 .fa
     cursor pointer
     transition transition-background-hover
 
     &-chevron-right
         padding-left 20px
+
     &-chevron-left
         padding-right 20px
+
     &:hover
         color white
 </style>
