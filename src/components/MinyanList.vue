@@ -8,8 +8,11 @@
                 <h3>{{ minyan.type }}</h3>
                 <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{minyan.house.state }}</span>
             </div>
-            <div class="action">
+            <div v-if="!user.isAttending(minyan)" class="action" @click="user.attend(minyan)">
                 <a class="button button--primary uppercase">Attend</a>
+            </div>
+            <div v-else class="action" @click="user.cancelAttendanceAt(minyan)">
+                <a class="button button--cancel uppercase">Cancel Attendance</a>
             </div>
         </article>
     </section>

@@ -6,6 +6,7 @@ export default class Minyan {
      * @return {void}
      */
     constructor (attributes = []) {
+        this.id = attributes.id
         this.type = attributes.type
         this.house = attributes.house
         this.timestamp = attributes.timestamp
