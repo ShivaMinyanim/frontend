@@ -8,11 +8,11 @@
                 <h3>{{ minyan.type }}</h3>
                 <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{minyan.house.state }}</span>
             </div>
-            <div v-if="!user.isAttending(minyan)" class="action" @click="user.attend(minyan)">
-                <a class="button button--primary uppercase">Attend</a>
+            <div v-if="!user.isAttending(minyan)" class="action">
+                <a @click="user.attend(minyan)" class="button button--primary uppercase">Attend</a>
             </div>
-            <div v-else class="action" @click="user.cancelAttendanceAt(minyan)">
-                <a class="button button--cancel uppercase">Cancel Attendance</a>
+            <div v-else class="action">
+                <a @click="user.cancelAttendanceAt(minyan)" class="button button--cancel uppercase">Cancel Attendance</a>
             </div>
         </article>
     </section>
@@ -22,6 +22,12 @@
 export default {
     props: {
         minyanim: Array
+    },
+
+    data () {
+        return {
+            user: this.$store.getters.user
+        }
     }
 }
 </script>

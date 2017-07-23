@@ -1,18 +1,19 @@
+import UserHttpService from '@/api/services/UserHttpService'
 import MinyanHttpService from '@/api/services/MinyanHttpService'
 
+// import User from '@/api/models/User'
+// import Users from '@/api/resources/Users'
+
 export default {
+    FETCH_USER: ({commit, dispatch, state}) => {
+        return UserHttpService.get()
+            .then(user => commit('SET_USER', { user }))
+    },
+
     FETCH_MINYAN_LIST: ({ commit, dispatch, state }, { filter }) => {
         return MinyanHttpService.get(filter)
             .then(minyanim => commit('SET_MINYANIM', { minyanim }))
-            // .then(() => dispatch('ENSURE_ACTIVE_ITEMS'))
     }
-
-    // // ensure all active items are fetched
-    // ENSURE_ACTIVE_ITEMS: ({ dispatch, getters }) => {
-    //     return dispatch('FETCH_ITEMS', {
-    //         ids: getters.activeIds
-    //     })
-    // },
 
     // FETCH_ITEMS: ({ commit, state }, { ids }) => {
     //     // on the client, the store itself serves as a cache.
@@ -33,11 +34,5 @@ export default {
     //     } else {
     //         return Promise.resolve()
     //     }
-    // }
-
-    // FETCH_USER: ({ commit, state }, { id }) => {
-    //     return state.users[id]
-    //         ? Promise.resolve(state.users[id])
-    //         : fetchUser(id).then(user => commit('SET_USER', { id, user }))
     // }
 }

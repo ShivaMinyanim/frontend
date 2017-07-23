@@ -1,15 +1,17 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import store from '@/store'
+import routes from './routes'
+import VueRouter from 'vue-router'
 
-import Welcome from '@/views/Welcome'
-import NextMinyanim from '@/views/NextMinyanim'
+Vue.use(VueRouter)
 
-Vue.use(Router)
+const Router = new VueRouter({ mode: 'history', routes })
 
-export default new Router({
-    mode: 'history',
-    routes: [
-        { path: '/', component: Welcome },
-        { path: '/next-minyanim', component: NextMinyanim }
-    ]
+Router.beforeEach((to, from, next) => {
+    // get the current user if there is a token saved
+    // and make sure he is put in the store
+    store.dispatch('FETCH_USER')
+        .then(() => next())
 })
+
+export default Router
