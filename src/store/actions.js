@@ -1,4 +1,4 @@
-import api from '@/api'
+import { api, oauth } from '@/api'
 
 export default {
     FETCH_USER: ({ commit }) => {
@@ -32,6 +32,18 @@ export default {
 
         return api.delete(`users/${getters.user.id}/minyanim/${minyan.id}`)
             .then(() => commit('SET_ATTENDANCES', { minyanimIds: remainingMinyanimIds }))
+    },
+
+    LOGIN: ({ commit, dispatch }, { email, password }) => {
+        return oauth.post('oauth/token', {
+            'grant_type': 'password',
+            'client_id': process.env.OAUTH.CLIENT_ID,
+            'client_secret': process.env.OAUTH.CLIENT_SECRET,
+            'username': email,
+            'password': password
+        }).then(response => {
+            localStorage.setItem('sm.access_token', response.data.access_token)
+        }).then(() => dispatch('FETCH_USER'))
     }
 
     // FETCH_ITEMS: ({ commit, state }, { ids }) => {

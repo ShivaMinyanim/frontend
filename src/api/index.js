@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: process.env.API_URL
+    baseURL: process.env.API_URL + '/api'
 })
 
 api.interceptors.request.use(function (config) {
@@ -14,4 +14,10 @@ api.interceptors.request.use(function (config) {
     return Promise.reject(error)
 })
 
-export default api
+const oauth = axios.create({
+    baseURL: process.env.API_URL
+})
+
+export {
+    api, oauth
+}

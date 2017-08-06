@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const Router = new VueRouter({ mode: 'history', routes })
 
 Router.beforeEach((to, from, next) => {
-    if (to.path !== '/') {
+    if (to.path !== '/login') {
         // get the current user if there is a token saved
         // and make sure he is put in the store
         store.dispatch('FETCH_USER')
@@ -19,7 +19,7 @@ Router.beforeEach((to, from, next) => {
                 // home page until we decide what to do
                 // with you
                 if (error.response.status === 401) {
-                    next('/')
+                    next('/login')
                 }
             })
     }

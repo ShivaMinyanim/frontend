@@ -8,7 +8,7 @@
                 </div>
                 <div class="links--right">
                     <router-link to="/donate" class="uppercase text--color-accent donate">Donate</router-link>
-                    <a href="javascript:void(0)" class="text--color-secondary carrot--after-down">Ari Miller</a>
+                    <a href="javascript:void(0)" class="text--color-secondary carrot--after-down capitalize">{{ user.name }}</a>
                 </div>
             </nav>
             <div class="page-title--container">
@@ -22,7 +22,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+    computed: {
+        user () {
+            return this.$store.getters.user
+        }
+    }
+}
 </script>
 
 <style scoped lang="stylus">
