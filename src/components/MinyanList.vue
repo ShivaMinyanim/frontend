@@ -6,13 +6,13 @@
             </div>
             <div class="description capitalize">
                 <h3>{{ minyan.type }}</h3>
-                <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{minyan.house.state }}</span>
+                <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{ minyan.house.state }}</span>
             </div>
-            <div v-if="!user.isAttending(minyan)" class="action">
-                <a @click="user.attend(minyan)" class="button button--primary uppercase">Attend</a>
+            <div v-if="!isAttending(minyan)" class="action">
+                <a @click="attend(minyan)" class="button button--primary uppercase">Attend</a>
             </div>
             <div v-else class="action">
-                <a @click="user.cancelAttendanceAt(minyan)" class="button button--cancel uppercase">Cancel Attendance</a>
+                <a @click="cancelAttendanceAt(minyan)" class="button button--cancel uppercase">Cancel Attendance</a>
             </div>
         </article>
     </section>
@@ -24,10 +24,32 @@ export default {
         minyanim: Array
     },
 
-    data () {
-        return {
-            user: this.$store.getters.user
+    computed: {
+        user () {
+            return this.$store.getters.user
+        },
+
+        attendances () {
+            return this.$store.getters.attendances
         }
+    },
+
+    methods: {
+        isAttending (minyan) {
+            return this.attendances.includes(minyan.id)
+        },
+
+        attend (minyan) {
+            this.$store.dispatch('ATTEND_MINYAN', { minyan })
+        },
+
+        cancelAttendanceAt (minyan) {
+            this.$store.dispatch('CANCEL_ATTENDANCE_AT_MINYAN', { minyan })
+        }
+    },
+
+    mounted () {
+        this.$store.dispatch('FETCH_ATTENDANCES')
     }
 }
 </script>

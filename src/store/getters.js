@@ -3,7 +3,7 @@ export default {
      * Get all saved minyanimm.
      *
      * @param  {Object} state
-     * @return {Minyan[]}
+     * @return {Array}
      */
     minyanim (state) {
         return state.minyanim
@@ -13,9 +13,20 @@ export default {
      * Get the current user.
      *
      * @param  {Object} state
-     * @return {User}
+     * @return {Object}
      */
     user (state) {
         return state.user
+    },
+
+    /**
+     * Get the minyanim the user is
+     * currently attending.
+     *
+     * @param  {Object} state
+     * @return {Array}
+     */
+    attendances (state) {
+        return state.attendances
     }
 }

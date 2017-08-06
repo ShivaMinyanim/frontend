@@ -1,18 +1,37 @@
-import UserHttpService from '@/api/services/UserHttpService'
-import MinyanHttpService from '@/api/services/MinyanHttpService'
-
-// import User from '@/api/models/User'
-// import Users from '@/api/resources/Users'
+import api from '@/api'
 
 export default {
-    FETCH_USER: ({commit, dispatch, state}) => {
-        return UserHttpService.get()
-            .then(user => commit('SET_USER', { user }))
+    FETCH_USER: ({ commit }) => {
+        return api.get('/user')
+            .then(response => commit('SET_USER', { user: response.data }))
     },
 
-    FETCH_MINYAN_LIST: ({ commit, dispatch, state }, { filter }) => {
-        return MinyanHttpService.get(filter)
-            .then(minyanim => commit('SET_MINYANIM', { minyanim }))
+    FETCH_MINYAN_LIST: ({ commit }, { filter }) => {
+        return api.get('/minyanim', filter)
+            .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
+    },
+
+    FETCH_ATTENDANCES: ({ commit, dispatch, getters }) => {
+        return dispatch('FETCH_USER')
+            .then(() => getters.user.id)
+            .then(userId => api.get(`/users/${userId}/minyanim`))
+            .then(response => commit('SET_ATTENDANCES', { minyanimIds: response.data.map(m => m.id) }))
+    },
+
+    ATTEND_MINYAN: ({ commit, getters }, { minyan }) => {
+        const minyanimIds = getters.attendances
+        minyanimIds.push(minyan.id)
+
+        return api.put(`users/${getters.user.id}/minyanim`, { minyan_id: minyan.id })
+            .then(() => commit('SET_ATTENDANCES', { minyanimIds }))
+    },
+
+    CANCEL_ATTENDANCE_AT_MINYAN: ({ commit, getters }, { minyan }) => {
+        const remainingMinyanimIds = getters.attendances
+            .filter(id => id !== minyan.id)
+
+        return api.delete(`users/${getters.user.id}/minyanim/${minyan.id}`)
+            .then(() => commit('SET_ATTENDANCES', { minyanimIds: remainingMinyanimIds }))
     }
 
     // FETCH_ITEMS: ({ commit, state }, { ids }) => {
