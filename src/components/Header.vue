@@ -8,8 +8,8 @@
                 </div>
                 <div class="links--right">
                     <router-link to="/donate" class="uppercase text--color-accent donate">Donate</router-link>
-                    <a href="javascript:void(0)" @click="toggleDropdown()" class="text--color-secondary carrot--after-down capitalize">{{ user.name }}</a>
-                    <dropdown :visible="isDropdownOpen">
+                    <a href="javascript:void(0)" @click="dropdown.toggle()" class="text--color-secondary carrot--after-down capitalize">{{ user.name }}</a>
+                    <dropdown ref="dropdown">
                         <a href="javascript:void(0)" @click="logout()">Sign Out</a>
                     </dropdown>
                 </div>
@@ -32,7 +32,7 @@ export default {
 
     data () {
         return {
-            isDropdownOpen: false
+            dropdown: null
         }
     },
 
@@ -43,20 +43,16 @@ export default {
     },
 
     methods: {
-        toggleDropdown () {
-            this.isDropdownOpen = !this.isDropdownOpen
-        },
-
         logout () {
             this.$store.dispatch('LOGOUT')
                 .then(() => this.$router.push('/'))
 
-            this.closeDropdown()
-        },
-
-        closeDropdown () {
-            this.isDropdownOpen = false
+            this.dropdown.close()
         }
+    },
+
+    mounted () {
+        this.dropdown = this.$refs.dropdown
     }
 }
 </script>
