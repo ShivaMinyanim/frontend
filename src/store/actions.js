@@ -44,6 +44,12 @@ export default {
         }).then(response => {
             localStorage.setItem('sm.access_token', response.data.access_token)
         }).then(() => dispatch('FETCH_USER'))
+    },
+
+    LOGOUT: ({ commit }) => {
+        localStorage.clear('sm.access_token')
+
+        return commit('SET_USER', { user: false })
     }
 
     // FETCH_ITEMS: ({ commit, state }, { ids }) => {

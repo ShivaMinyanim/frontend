@@ -8,7 +8,10 @@
                 </div>
                 <div class="links--right">
                     <router-link to="/donate" class="uppercase text--color-accent donate">Donate</router-link>
-                    <a href="javascript:void(0)" class="text--color-secondary carrot--after-down capitalize">{{ user.name }}</a>
+                    <a href="javascript:void(0)" @click="toggleDropdown()" class="text--color-secondary carrot--after-down capitalize">{{ user.name }}</a>
+                    <dropdown :visible="isDropdownOpen">
+                        <a href="javascript:void(0)" @click="logout()">Sign Out</a>
+                    </dropdown>
                 </div>
             </nav>
             <div class="page-title--container">
@@ -22,10 +25,37 @@
 </template>
 
 <script>
+import Dropdown from '@/components/Dropdown'
+
 export default {
+    components: { Dropdown },
+
+    data () {
+        return {
+            isDropdownOpen: false
+        }
+    },
+
     computed: {
         user () {
             return this.$store.getters.user
+        }
+    },
+
+    methods: {
+        toggleDropdown () {
+            this.isDropdownOpen = !this.isDropdownOpen
+        },
+
+        logout () {
+            this.$store.dispatch('LOGOUT')
+                .then(() => this.$router.push('/'))
+
+            this.closeDropdown()
+        },
+
+        closeDropdown () {
+            this.isDropdownOpen = false
         }
     }
 }
@@ -46,11 +76,12 @@ export default {
     font-size 10px
     font-weight 600
     letter-spacing .85px
+    position relative
 
-    &--left a
+    &--left > a
             margin-right 45px
 
-    &--right a
+    &--right > a
             margin-left 45px
 
     a
