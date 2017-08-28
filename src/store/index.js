@@ -10,6 +10,7 @@ export default new Vuex.Store({
     state: {
         user: false,
         minyanim: [],
+        houses: [],
         attendances: []
     },
     actions,

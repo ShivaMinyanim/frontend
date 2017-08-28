@@ -11,6 +11,21 @@ export default {
             .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
     },
 
+    FETCH_HOUSE_LIST: ({ dispatch, commit, getters }, { filter }) => {
+        return dispatch('FETCH_MINYAN_LIST', { filter })
+            .then(() => {
+                let houses = getters.minyanim
+                    .reduce((houses, minyan) => {
+                        houses[minyan.house_id] = minyan.house
+                        return houses
+                    }, {})
+
+                houses = Object.keys(houses).map(key => houses[key])
+
+                return commit('SET_HOUSES', { houses })
+            })
+    },
+
     FETCH_ATTENDANCES: ({ commit, dispatch, getters }) => {
         return dispatch('FETCH_USER')
             .then(() => getters.user.id)

@@ -10,6 +10,16 @@ export default {
     },
 
     /**
+     * Get all saved houses.
+     *
+     * @param  {Object} state
+     * @return {Array}
+     */
+    houses (state) {
+        return state.houses
+    },
+
+    /**
      * Get the current user.
      *
      * @param  {Object} state
