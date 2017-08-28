@@ -7,7 +7,7 @@ export default {
     },
 
     FETCH_MINYAN_LIST: ({ commit }, { filter }) => {
-        return api.get('minyanim', filter)
+        return api.get('minyanim', { params: filter })
             .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
     },
 
