@@ -2,19 +2,19 @@ import { api, oauth } from '@/api'
 
 export default {
     FETCH_USER: ({ commit }) => {
-        return api.get('/user')
+        return api.get('user')
             .then(response => commit('SET_USER', { user: response.data }))
     },
 
     FETCH_MINYAN_LIST: ({ commit }, { filter }) => {
-        return api.get('/minyanim', filter)
+        return api.get('minyanim', filter)
             .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
     },
 
     FETCH_ATTENDANCES: ({ commit, dispatch, getters }) => {
         return dispatch('FETCH_USER')
             .then(() => getters.user.id)
-            .then(userId => api.get(`/users/${userId}/minyanim`))
+            .then(userId => api.get(`users/${userId}/minyanim`))
             .then(response => commit('SET_ATTENDANCES', { minyanimIds: response.data.map(m => m.id) }))
     },
 
@@ -34,7 +34,7 @@ export default {
             .then(() => commit('SET_ATTENDANCES', { minyanimIds: remainingMinyanimIds }))
     },
 
-    LOGIN: ({ commit, dispatch }, { email, password }) => {
+    LOGIN: ({ dispatch }, { email, password }) => {
         return oauth.post('oauth/token', {
             'grant_type': 'password',
             'client_id': process.env.OAUTH.CLIENT_ID,
