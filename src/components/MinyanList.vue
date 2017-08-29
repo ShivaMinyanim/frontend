@@ -6,7 +6,7 @@
             </div>
             <div class="description capitalize">
                 <h3>{{ minyan.type }}</h3>
-                <span class="secondary text--color-secondary">{{ minyan.house.street }} {{ minyan.house.city }}, {{ minyan.house.state }}</span>
+                <span class="secondary text--color-secondary"> {{ addressOf(minyan) }}</span>
             </div>
             <div v-if="!isAttending(minyan)" class="action">
                 <a @click="attend(minyan)" class="button button--primary uppercase">Attend</a>
@@ -35,6 +35,12 @@ export default {
     },
 
     methods: {
+        addressOf (minyan) {
+            const house = minyan.house
+
+            return `${house.street} ${house.city}, ${house.state}`
+        },
+
         isAttending (minyan) {
             return this.attendances.includes(minyan.id)
         },

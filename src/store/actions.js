@@ -14,13 +14,23 @@ export default {
     FETCH_HOUSE_LIST: ({ dispatch, commit, getters }, { filter }) => {
         return dispatch('FETCH_MINYAN_LIST', { filter })
             .then(() => {
-                let houses = getters.minyanim
-                    .reduce((houses, minyan) => {
-                        houses[minyan.house_id] = minyan.house
-                        return houses
-                    }, {})
+                const housesMap = getters.minyanim
+                    .slice()
+                    .reduce((all, minyan) => {
+                        return all.set(minyan.house_id, minyan.house)
+                    }, new Map())
 
-                houses = Object.keys(houses).map(key => houses[key])
+                getters.minyanim.forEach(minyan => {
+                    let house = housesMap.get(minyan.house_id)
+
+                    if (!Array.isArray(house.minyanim)) {
+                        house.minyanim = []
+                    }
+
+                    house.minyanim.push(minyan)
+                })
+
+                const houses = Array.from(housesMap.values())
 
                 return commit('SET_HOUSES', { houses })
             })

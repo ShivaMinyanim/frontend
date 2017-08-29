@@ -9,8 +9,14 @@
                 <i v-if="dayOffset < MAX_OFFSET" class="fa fa-chevron-right" @click="next()"></i>
             </div>
         </sub-header>
-        <div class="container center">
-            <house-card v-for="house in houses" :house="house" v-if="houses.length > 0"></house-card>
+        <div class="container center card-list">
+            <house-card
+                class="card"
+                :house="house"
+                :key="house.id"
+                v-for="house in houses"
+                v-if="houses.length > 0">
+            </house-card>
             <p v-else>No Minyanim for this day.</p>
         </div>
     </div>
@@ -100,4 +106,10 @@ export default {
 
     &:hover
         color white
+
+.card-list
+    margin-top 60px
+
+    .card
+        margin 0 30px 30px 0
 </style>
