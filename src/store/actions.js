@@ -11,34 +11,8 @@ export default {
             .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
     },
 
-    FETCH_HOUSE_LIST: ({ dispatch, commit, state }, { filter }) => {
+    FETCH_HOUSE_LIST: ({ dispatch }, { filter }) => {
         return dispatch('FETCH_MINYAN_LIST', { filter })
-            .then(() => {
-                // houses = groupMinyanimByHouse(state.minyanim)
-
-                // make this a group by house method ??
-
-                const housesMap = state.minyanim
-                    .slice()
-                    .reduce((all, minyan) => {
-                        return all.set(minyan.house_id, minyan.house)
-                    }, new Map())
-
-                state.minyanim.forEach(minyan => {
-                    let house = housesMap.get(minyan.house_id)
-
-                    // TODO: should be part of APi
-                    if (!Array.isArray(house.minyanim)) {
-                        house.minyanim = []
-                    }
-
-                    house.minyanim.push(minyan)
-                })
-
-                const houses = Array.from(housesMap.values())
-
-                return commit('SET_HOUSES', { houses })
-            })
     },
 
     FETCH_ATTENDANCES: ({ commit, dispatch, state }) => {

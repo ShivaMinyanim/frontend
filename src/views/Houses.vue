@@ -30,7 +30,7 @@ export default {
             }
 
             this.$store.dispatch('FETCH_HOUSE_LIST', { filter })
-                .then(() => this.houses = this.$store.state.houses)
+                .then(() => this.houses = this.$store.getters.houses)
         }
     },
 

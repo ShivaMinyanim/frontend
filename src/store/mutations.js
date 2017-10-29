@@ -7,10 +7,6 @@ export default {
         state.minyanim = minyanim
     },
 
-    SET_HOUSES: (state, { houses }) => {
-        state.houses = houses
-    },
-
     SET_ATTENDANCES: (state, { minyanimIds }) => {
         state.attendances = minyanimIds
     }
