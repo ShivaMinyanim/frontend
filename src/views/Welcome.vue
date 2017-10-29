@@ -12,8 +12,8 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-    div
-        width 300px
-        margin auto
-        text-align center
+div
+    width 300px
+    margin auto
+    text-align center
 </style>

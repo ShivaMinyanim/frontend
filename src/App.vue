@@ -6,13 +6,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-
 export default {
-    name: 'app',
-    components: {
-        'sm-header': Header
-    }
+    name: 'app'
 }
 </script>
 

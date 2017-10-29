@@ -4,6 +4,21 @@ import store from '@/store'
 import router from '@/router'
 import * as filters from '@/util/filters'
 
+import Header from '@/components/Header'
+import DateNav from '@/components/DateNav'
+import Dropdown from '@/components/Dropdown'
+import HouseCard from '@/components/HouseCard'
+import MinyanList from '@/components/MinyanList'
+import SubHeader from '@/components/SubHeader'
+
+// register components
+Vue.component('sm-header', Header)
+Vue.component('date-nav', DateNav)
+Vue.component('dropdown', Dropdown)
+Vue.component('house-card', HouseCard)
+Vue.component('minyan-list', MinyanList)
+Vue.component('sub-header', SubHeader)
+
 // set the production tip
 Vue.config.productionTip = false
 

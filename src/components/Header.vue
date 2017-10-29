@@ -25,11 +25,7 @@
 </template>
 
 <script>
-import Dropdown from '@/components/Dropdown'
-
 export default {
-    components: { Dropdown },
-
     data () {
         return {
             dropdown: null

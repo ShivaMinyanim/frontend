@@ -4,12 +4,7 @@
             <date-nav :value="date" v-on:input="updateHouseList($event)"></date-nav>
         </sub-header>
         <div class="container center card-list">
-            <house-card
-                class="card"
-                :house="house"
-                :key="house.id"
-                v-for="house in houses">
-            </house-card>
+            <house-card class="card" :house="house" :key="house.id" v-for="house in houses"></house-card>
             <p v-if="!houses.length">No Minyanim for this day.</p>
         </div>
     </div>
@@ -18,13 +13,7 @@
 <script>
 import moment from 'moment'
 
-import SubHeader from '@/components/SubHeader'
-import HouseCard from '@/components/HouseCard'
-import DateNav from '@/components/DateNav'
-
 export default {
-    components: { SubHeader, HouseCard, DateNav },
-
     data () {
         return {
             houses: [],

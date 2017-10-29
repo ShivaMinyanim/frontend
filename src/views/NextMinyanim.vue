@@ -13,13 +13,7 @@
 <script>
 import moment from 'moment'
 
-import SubHeader from '@/components/SubHeader'
-import MinyanList from '@/components/MinyanList'
-import DateNav from '@/components/DateNav'
-
 export default {
-    components: { MinyanList, SubHeader, DateNav },
-
     data () {
         return {
             minyanim: [],
