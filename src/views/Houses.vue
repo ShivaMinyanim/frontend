@@ -14,10 +14,9 @@
                 class="card"
                 :house="house"
                 :key="house.id"
-                v-for="house in houses"
-                v-if="houses.length > 0">
+                v-for="house in houses">
             </house-card>
-            <p v-else>No Minyanim for this day.</p>
+            <p v-if="!houses.length">No Minyanim for this day.</p>
         </div>
     </div>
 </template>
@@ -75,8 +74,7 @@ export default {
             }
 
             this.$store.dispatch('FETCH_HOUSE_LIST', { filter: date })
-                .then(() => this.houses = this.$store.getters.houses)
-                // .then(() => console.log(this.houses))
+                .then(() => this.houses = this.$store.state.houses)
         }
     },
 

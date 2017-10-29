@@ -11,18 +11,23 @@ export default {
             .then(response => commit('SET_MINYANIM', { minyanim: response.data }))
     },
 
-    FETCH_HOUSE_LIST: ({ dispatch, commit, getters }, { filter }) => {
+    FETCH_HOUSE_LIST: ({ dispatch, commit, state }, { filter }) => {
         return dispatch('FETCH_MINYAN_LIST', { filter })
             .then(() => {
-                const housesMap = getters.minyanim
+                // houses = groupMinyanimByHouse(state.minyanim)
+
+                // make this a group by house method ??
+
+                const housesMap = state.minyanim
                     .slice()
                     .reduce((all, minyan) => {
                         return all.set(minyan.house_id, minyan.house)
                     }, new Map())
 
-                getters.minyanim.forEach(minyan => {
+                state.minyanim.forEach(minyan => {
                     let house = housesMap.get(minyan.house_id)
 
+                    // TODO: should be part of APi
                     if (!Array.isArray(house.minyanim)) {
                         house.minyanim = []
                     }
@@ -36,26 +41,26 @@ export default {
             })
     },
 
-    FETCH_ATTENDANCES: ({ commit, dispatch, getters }) => {
+    FETCH_ATTENDANCES: ({ commit, dispatch, state }) => {
         return dispatch('FETCH_USER')
-            .then(() => getters.user.id)
+            .then(() => state.user.id)
             .then(userId => api.get(`users/${userId}/minyanim`))
             .then(response => commit('SET_ATTENDANCES', { minyanimIds: response.data.map(m => m.id) }))
     },
 
-    ATTEND_MINYAN: ({ commit, getters }, { minyan }) => {
-        const minyanimIds = getters.attendances
+    ATTEND_MINYAN: ({ commit, state }, { minyan }) => {
+        const minyanimIds = state.attendances
         minyanimIds.push(minyan.id)
 
-        return api.put(`users/${getters.user.id}/minyanim`, { minyan_id: minyan.id })
+        return api.put(`users/${state.user.id}/minyanim`, { minyan_id: minyan.id })
             .then(() => commit('SET_ATTENDANCES', { minyanimIds }))
     },
 
-    CANCEL_ATTENDANCE_AT_MINYAN: ({ commit, getters }, { minyan }) => {
-        const remainingMinyanimIds = getters.attendances
+    CANCEL_ATTENDANCE_AT_MINYAN: ({ commit, state }, { minyan }) => {
+        const remainingMinyanimIds = state.attendances
             .filter(id => id !== minyan.id)
 
-        return api.delete(`users/${getters.user.id}/minyanim/${minyan.id}`)
+        return api.delete(`users/${state.user.id}/minyanim/${minyan.id}`)
             .then(() => commit('SET_ATTENDANCES', { minyanimIds: remainingMinyanimIds }))
     },
 

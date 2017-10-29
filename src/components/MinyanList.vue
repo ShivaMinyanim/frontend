@@ -26,11 +26,11 @@ export default {
 
     computed: {
         user () {
-            return this.$store.getters.user
+            return this.$store.state.user
         },
 
         attendances () {
-            return this.$store.getters.attendances
+            return this.$store.state.attendances
         }
     },
 

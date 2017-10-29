@@ -69,7 +69,7 @@ export default {
             }
 
             this.$store.dispatch('FETCH_MINYAN_LIST', { filter: date })
-                .then(() => this.minyanim = this.$store.getters.minyanim)
+                .then(() => this.minyanim = this.$store.state.minyanim)
         }
     },
 

@@ -6,6 +6,6 @@ module.exports = merge(prodEnv, {
   API_URL: '"http://shivaminyanim.dev"',
   OAUTH: {
     CLIENT_ID: '"1"',
-    CLIENT_SECRET: '"IXHZlbbJFAnKgCnMAMgjIj5U9WyXDxziX51f1ssI"'
+    CLIENT_SECRET: '"qHTdiHtbHCl9UxE37XUqgvTJRKSbAwfpmkOVeuyW"'
   }
 })
