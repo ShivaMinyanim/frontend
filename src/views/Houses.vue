@@ -11,39 +11,39 @@
 </template>
 
 <script>
-import moment from 'moment'
+    import moment from 'moment'
 
-export default {
-    data () {
-        return {
-            houses: [],
-            date: moment()
-        }
-    },
-
-    methods: {
-        updateHouseList (date) {
-            const filter = {
-                month: date.format('MM'),
-                day: date.format('DD'),
-                year: date.format('YYYY')
+    export default {
+        data () {
+            return {
+                houses: [],
+                date: moment()
             }
+        },
 
-            this.$store.dispatch('FETCH_HOUSE_LIST', { filter })
-                .then(() => this.houses = this.$store.getters.houses)
+        methods: {
+            updateHouseList (date) {
+                const filter = {
+                    month: date.format('MM'),
+                    day: date.format('DD'),
+                    year: date.format('YYYY')
+                }
+
+                this.$store.dispatch('FETCH_HOUSE_LIST', { filter })
+                    .then(() => this.houses = this.$store.getters.houses)
+            }
+        },
+
+        mounted () {
+            this.updateHouseList(this.date)
         }
-    },
-
-    mounted () {
-        this.updateHouseList(this.date)
     }
-}
 </script>
 
 <style scoped lang="stylus">
-.card-list
-    margin-top 60px
+    .card-list
+        margin-top 60px
 
-    .card
-        margin 0 30px 30px 0
+        .card
+            margin 0 30px 30px 0
 </style>

@@ -25,82 +25,82 @@
 </template>
 
 <script>
-export default {
-    data () {
-        return {
-            dropdown: null
+    export default {
+        data () {
+            return {
+                dropdown: null
+            }
+        },
+
+        computed: {
+            user () {
+                return this.$store.state.user
+            }
+        },
+
+        methods: {
+            logout () {
+                this.$store.dispatch('LOGOUT')
+                    .then(() => this.$router.push('/'))
+
+                this.dropdown.close()
+            }
+        },
+
+        mounted () {
+            this.dropdown = this.$refs.dropdown
         }
-    },
-
-    computed: {
-        user () {
-            return this.$store.state.user
-        }
-    },
-
-    methods: {
-        logout () {
-            this.$store.dispatch('LOGOUT')
-                .then(() => this.$router.push('/'))
-
-            this.dropdown.close()
-        }
-    },
-
-    mounted () {
-        this.dropdown = this.$refs.dropdown
     }
-}
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/variables'
+    @import '../styles/variables'
 
-.header
-    background primary
-    color white
-
-.links
-    display flex
-    height 58px
-    align-items center
-    justify-content space-between
-    font-size 10px
-    font-weight 600
-    letter-spacing .85px
-    position relative
-
-    &--left > a
-            margin-right 45px
-
-    &--right > a
-            margin-left 45px
-
-    a
-        text-decoration none
-        transition transition-background-hover
-
-        &:not(.donate):hover
-            color white
-
-        &.donate:hover
-            text-decoration underline
-
-    .router-link-active
+    .header
+        background primary
         color white
 
-.page-title--container
-    display flex
-    padding-bottom 20px
-
-    .logo--container
+    .links
         display flex
+        height 58px
         align-items center
-        margin-left -75px
-        padding-right 25px
+        justify-content space-between
+        font-size 10px
+        font-weight 600
+        letter-spacing .85px
+        position relative
 
-        .logo
-            border-right 1px solid rgba(55,62,77,.56)
-            height 28px
-            padding 5px 25px 5px 0
+        &--left > a
+                margin-right 45px
+
+        &--right > a
+                margin-left 45px
+
+        a
+            text-decoration none
+            transition transition-background-hover
+
+            &:not(.donate):hover
+                color white
+
+            &.donate:hover
+                text-decoration underline
+
+        .router-link-active
+            color white
+
+    .page-title--container
+        display flex
+        padding-bottom 20px
+
+        .logo--container
+            display flex
+            align-items center
+            margin-left -75px
+            padding-right 25px
+
+            .logo
+                border-right 1px solid rgba(55,62,77,.56)
+                height 28px
+                padding 5px 25px 5px 0
 </style>

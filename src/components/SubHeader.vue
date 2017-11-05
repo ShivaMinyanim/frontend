@@ -5,16 +5,16 @@
 </template>
 
 <script>
-export default {}
+    export default {}
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/variables'
+    @import '../styles/variables'
 
-.sub-header
-    background primary
-    color #898F9A
-    text-align center
-    font-size 13px
-    padding-bottom 20px
+    .sub-header
+        background primary
+        color #898F9A
+        text-align center
+        font-size 13px
+        padding-bottom 20px
 </style>
