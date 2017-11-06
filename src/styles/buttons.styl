@@ -1,5 +1,11 @@
 @import 'variables'
 
+button
+    font-family font
+
+    &:focus
+        outline none
+
 .button
     box-sizing border-box
     border-radius 2px
@@ -32,3 +38,8 @@
         &:hover
             background danger
             color white
+
+.button--round
+    box-sizing border-box
+    border-radius 100px
+    cursor pointer

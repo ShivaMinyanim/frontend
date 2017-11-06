@@ -4,7 +4,7 @@
             <date-nav :value="date" v-on:input="updateHouseList($event)"></date-nav>
         </sub-header>
         <div class="container center card-list">
-            <house-card class="card" :house="house" :key="house.id" v-for="house in houses"></house-card>
+            <house-card class="spacer" :house="house" :key="house.id" v-for="house in houses"></house-card>
             <p v-if="!houses.length">No Minyanim for this day.</p>
         </div>
     </div>
@@ -44,6 +44,6 @@
     .card-list
         margin-top 60px
 
-        .card
-            margin 0 30px 30px 0
+        .spacer
+            margin-right 30px
 </style>

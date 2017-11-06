@@ -66,16 +66,12 @@
                 color border
 
     .form-button
-        border-radius 100px
         color white
-        cursor pointer
         font-family 'Open Sans', sans-serif
         font-size 11px
         font-weight 600
         height 50px
-        letter-spacing .8px
         line-height 50px
         margin 20px auto
         padding 0 60px
-        text-transform uppercase
 </style>
